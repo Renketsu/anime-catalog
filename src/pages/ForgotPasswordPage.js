@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const LoginContainer = styled.div`
+const ForgotPasswordContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,41 +26,28 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const LoginPage = () => {
+const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Lógica de login
+    // Lógica para recuperação de senha
   };
 
   return (
-    <LoginContainer>
-      <h1>Login</h1>
+    <ForgotPasswordContainer>
+      <h1>Forgot Password</h1>
       <Form onSubmit={handleSubmit}>
         <Input
           type="email"
-          placeholder="Email"
+          placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <Input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <Button type="submit">Login</Button>
+        <Button type="submit">Send Reset Link</Button>
       </Form>
-      <div>
-        <Link to="/forgot-password">Forgot Password?</Link>
-      </div>
-      <div>
-        <Link to="/signup">Register</Link>
-      </div>
-    </LoginContainer>
+    </ForgotPasswordContainer>
   );
 };
 
-export default LoginPage;
+export default ForgotPasswordPage;

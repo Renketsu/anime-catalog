@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
+import {
+  FacebookLoginButton,
+  GoogleLoginButton,
+} from "react-social-login-buttons";
 
-const LoginContainer = styled.div`
+const SignupContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,18 +30,19 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const LoginPage = () => {
+const SignupPage = () => {
   const [email, setEmail] = useState("");
+  const [nick, setNick] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Lógica de login
+    // Lógica de cadastro
   };
 
   return (
-    <LoginContainer>
-      <h1>Login</h1>
+    <SignupContainer>
+      <h1>Sign Up</h1>
       <Form onSubmit={handleSubmit}>
         <Input
           type="email"
@@ -47,21 +51,24 @@ const LoginPage = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <Input
+          type="text"
+          placeholder="Nick"
+          value={nick}
+          onChange={(e) => setNick(e.target.value)}
+        />
+        <Input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button type="submit">Login</Button>
+        <Button type="submit">Register</Button>
       </Form>
-      <div>
-        <Link to="/forgot-password">Forgot Password?</Link>
-      </div>
-      <div>
-        <Link to="/signup">Register</Link>
-      </div>
-    </LoginContainer>
+      <h2>Or sign up with</h2>
+      <FacebookLoginButton onClick={() => alert("Login com Facebook")} />
+      <GoogleLoginButton onClick={() => alert("Login com Google")} />
+    </SignupContainer>
   );
 };
 
-export default LoginPage;
+export default SignupPage;

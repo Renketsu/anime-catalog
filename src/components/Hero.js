@@ -2,6 +2,7 @@ import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 const HeroSection = styled.section`
   height: 500px;
@@ -31,6 +32,11 @@ const HeroSubtitle = styled.p`
 const Hero = () => {
   return (
     <HeroSection>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      ></motion.div>
       <HeroContent>
         <Carousel showThumbs={false} infiniteLoop autoPlay>
           <div>
